@@ -7,8 +7,7 @@
   "use strict";
 
   // ── Config ────────────────────────────────────────────────────────────────
-  const API_URL = "http://localhost:5000/api/chat"; // Change this when deploying
-
+  const API_URL = "https://youngminds-chatbot.onrender.com/api/chat";
   const QUICK_REPLIES = [
     "💰 Pricing",
     "🌐 Website packages",
