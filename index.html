@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YoungMinds Agency — AI Chatbot Demo</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Chatbot styles -->
+  <link rel="stylesheet" href="static/chatbot.css" />
+
+  <style>
+    /* ── Demo page styles (NOT part of the chatbot widget) ── */
+    *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
+
+    body {
+      font-family : 'Inter', system-ui, sans-serif;
+      background  : #0a0a0a;
+      color       : #f0f0f0;
+      min-height  : 100vh;
+      display     : flex;
+      flex-direction: column;
+      align-items : center;
+      justify-content: center;
+      padding     : 40px 20px;
+    }
+
+    .demo-badge {
+      background    : #1a1a1a;
+      border        : 1px solid #2e2e2e;
+      border-radius : 20px;
+      padding       : 5px 14px;
+      font-size     : 12px;
+      color         : #f5c518;
+      letter-spacing: 0.04em;
+      margin-bottom : 24px;
+      text-transform: uppercase;
+    }
+
+    .demo-logo {
+      font-size   : 36px;
+      font-weight : 700;
+      margin-bottom: 10px;
+    }
+
+    .demo-logo span { color: #f5c518; }
+
+    .demo-sub {
+      color       : #888;
+      font-size   : 15px;
+      max-width   : 400px;
+      text-align  : center;
+      line-height : 1.6;
+      margin-bottom: 48px;
+    }
+
+    .demo-cards {
+      display       : grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap           : 16px;
+      width         : 100%;
+      max-width     : 600px;
+      margin-bottom : 48px;
+    }
+
+    .demo-card {
+      background    : #161616;
+      border        : 1px solid #2a2a2a;
+      border-radius : 14px;
+      padding       : 18px 16px;
+      text-align    : center;
+    }
+
+    .demo-card .icon { font-size: 26px; margin-bottom: 8px; }
+    .demo-card h4    { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .demo-card p     { font-size: 11.5px; color: #666; line-height: 1.4; }
+
+    .demo-hint {
+      font-size : 13px;
+      color     : #555;
+      text-align: center;
+    }
+
+    .demo-hint strong { color: #f5c518; }
+
+    /* ── Integration note box ── */
+    .integration-note {
+      margin-top    : 60px;
+      background    : #111;
+      border        : 1px dashed #333;
+      border-radius : 12px;
+      padding       : 20px 24px;
+      max-width     : 600px;
+      width         : 100%;
+    }
+
+    .integration-note h3 {
+      font-size    : 14px;
+      color        : #f5c518;
+      margin-bottom: 10px;
+    }
+
+    .integration-note p {
+      font-size  : 12.5px;
+      color      : #777;
+      line-height: 1.65;
+    }
+
+    .integration-note code {
+      background    : #1a1a1a;
+      border        : 1px solid #2a2a2a;
+      border-radius : 6px;
+      padding       : 2px 8px;
+      font-size     : 11.5px;
+      color         : #f5c518;
+      font-family   : 'Courier New', monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Demo page content ── -->
+  <div class="demo-badge">🤖 Live Demo</div>
+
+  <div class="demo-logo">Young<span>Minds</span></div>
+  <p class="demo-sub">
+    AI-powered business assistant — asks questions, answers pricing,
+    handles hiring enquiries, and guides visitors 24/7.
+  </p>
+
+  <div class="demo-cards">
+    <div class="demo-card">
+      <div class="icon">💰</div>
+      <h4>Pricing Info</h4>
+      <p>Ask about any service cost</p>
+    </div>
+    <div class="demo-card">
+      <div class="icon">🌐</div>
+      <h4>Web Dev</h4>
+      <p>Websites, landing pages, stores</p>
+    </div>
+    <div class="demo-card">
+      <div class="icon">🎨</div>
+      <h4>Design</h4>
+      <p>Logos, branding, social creatives</p>
+    </div>
+    <div class="demo-card">
+      <div class="icon">🤖</div>
+      <h4>AI Solutions</h4>
+      <p>Chatbots, automations, AI tools</p>
+    </div>
+    <div class="demo-card">
+      <div class="icon">📱</div>
+      <h4>Social Media</h4>
+      <p>Strategy, posting, engagement</p>
+    </div>
+    <div class="demo-card">
+      <div class="icon">🎓</div>
+      <h4>Join the Team</h4>
+      <p>Students welcome — apply now</p>
+    </div>
+  </div>
+
+  <p class="demo-hint">
+    👉 Click the <strong>yellow button</strong> at the bottom-right to chat with Yemi!
+  </p>
+
+  <div class="integration-note">
+    <h3>📌 How to embed this chatbot on your existing website</h3>
+    <p>
+      Simply copy the 3 lines below and paste them before the
+      <code>&lt;/body&gt;</code> tag on any HTML page.<br /><br />
+      1. &nbsp;<code>&lt;link rel="stylesheet" href="static/chatbot.css"&gt;</code><br />
+      2. &nbsp;Paste the chatbot HTML block (toggle btn + chat window)<br />
+      3. &nbsp;<code>&lt;script src="static/chatbot.js"&gt;&lt;/script&gt;</code><br /><br />
+      That's it — the widget works on any site: WordPress, Webflow, plain HTML, etc.
+    </p>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       CHATBOT WIDGET — copy everything below into your own site
+  ════════════════════════════════════════════════════════════ -->
+
+  <!-- Toggle / launcher button -->
+  <button id="ym-toggle-btn" aria-label="Open YoungMinds chat">
+    <!-- Chat icon (shown when closed) -->
+    <svg id="ym-icon-chat" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/>
+    </svg>
+    <!-- Notification dot -->
+    <span class="ym-dot"></span>
+  </button>
+
+  <!-- Chat window -->
+  <div id="ym-chatbot" role="dialog" aria-label="YoungMinds AI Assistant">
+
+    <!-- Header -->
+    <div id="ym-header">
+      <div class="ym-header-left">
+        <div class="ym-avatar">⚡</div>
+        <div class="ym-header-info">
+          <h4>Yemi · YoungMinds</h4>
+          <span>Online now</span>
+        </div>
+      </div>
+      <div class="ym-header-actions">
+        <button id="ym-clear-btn" class="ym-icon-btn" title="Clear chat">↺</button>
+        <button id="ym-close-btn" class="ym-icon-btn" title="Close chat">✕</button>
+      </div>
+    </div>
+
+    <!-- Messages -->
+    <div id="ym-messages" role="log" aria-live="polite">
+
+      <!-- Typing indicator (hidden by default, shown while waiting for AI) -->
+      <div id="ym-typing" style="display:none;" aria-label="Yemi is typing">
+        <div class="ym-msg-avatar">⚡</div>
+        <div class="ym-dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Quick reply chips -->
+    <div id="ym-quick-replies" aria-label="Quick replies"></div>
+
+    <!-- Input -->
+    <div id="ym-input-area">
+      <textarea
+        id="ym-input"
+        placeholder="Ask about pricing, services, or joining…"
+        rows="1"
+        maxlength="500"
+        aria-label="Type your message"
+      ></textarea>
+      <button id="ym-send-btn" aria-label="Send message">
+        <!-- Send / arrow icon -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Footer -->
+    <div id="ym-footer">
+      Powered by <a href="https://youngmindsagency.vercel.app" target="_blank">YoungMinds Agency</a>
+    </div>
+
+  </div>
+  <!-- END CHATBOT WIDGET -->
+
+
+  <!-- Chatbot logic -->
+  <script src="static/chatbot.js"></script>
+
+</body>
+</html>
